@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>quiz</title>
+</head>
+<body>
+    
+    <div class="quiz-app"></div>
+
+
+
+
+    <script src="script.js"></script>
+    <script>
+        const quizApp = document.querySelector(".quiz-app") 
+        const chosenQuiz = sessionStorage.getItem("chosenQuiz")
+
+        const currentQuiz = quizContainer.find(quiz => quiz.name === chosenQuiz)
+        document.title = currentQuiz.name
+        let currentIndex = 0
+        let correctAnswers = 0
+        
+
+        function renderQuiz() {
+            quizApp.innerHTML = ""
+
+            const title = document.createElement("h2")
+            title.className = "quiz-app-title"
+            title.textContent = currentQuiz.name
+
+            const questions = currentQuiz.questions[currentIndex]
+            
+            const question = document.createElement("h3")
+            question.className = "quiz-question"
+            question.textContent = questions.question
+
+            const answers = document.createElement("div")
+            answers.className = "quiz-options"
+            questions.options.forEach(option => {
+                const answer = document.createElement("buton")
+                answer.className = "option-btn"
+                answer.textContent = option
+
+                answers.appendChild(answer)
+            })
+            answers.addEventListener("click", (e) => {
+                if (e.target.className === "option-btn") {
+                    nextBtn.disabled = false
+
+                    if (e.target.textContent === questions.correctAnswer) {
+                        correctAnswers++
+                        e.target.classList.add("correct")
+                        const btns = document.querySelectorAll(".option-btn")
+                        btns.forEach(btn => {
+                            if (btn.textContent !== questions.correctAnswer) btn.classList.add("incorrect")
+                        }) 
+                    } else {
+                        const btns = document.querySelectorAll(".option-btn") 
+                            btns.forEach(btn => {
+                                if (btn.textContent !== questions.correctAnswer) btn.classList.add("incorrect")
+                                if (btn.textContent === questions.correctAnswer) btn.classList.add("correct")
+                            }) 
+                        }
+                        const btns = document.querySelectorAll(".option-btn") 
+                        btns.forEach(btn => btn.disabled = true)
+                    }
+                })
+            
+
+                const nextBtn = document.createElement("button")
+                nextBtn.className = "next-btn"
+                nextBtn.disabled = true
+                if (currentIndex !== 4) {
+                    nextBtn.textContent = "следующий вопрос";
+                } else {
+                    nextBtn.textContent = "Завершить квиз";
+                    nextBtn.style.backgroundColor = "green"; }
+
+                nextBtn.addEventListener("click", () => {
+                    currentIndex++
+                    if (currentIndex !== 5) renderQuiz()
+                    if (currentIndex >= 5) {
+                        quizApp.innerHTML = ""
+                        const congratulations = document.createElement("h2")
+                        congratulations.textContent = "Поздравляю ты прошел квиз на " + correctAnswers + " из 5"
+                        quizApp.appendChild(congratulations)
+                        const uniqueKey = currentQuiz.name
+                        if (Number(localStorage.getItem(uniqueKey)) <= correctAnswers) localStorage.setItem(uniqueKey, correctAnswers)
+
+                        const retryBtn = document.createElement("button")
+                        retryBtn.textContent = "Вернуться на главную"
+                        retryBtn.className = "next-btn" 
+                        retryBtn.addEventListener("click", () => window.location.href = "index.html" )
+                        quizApp.appendChild(retryBtn)
+                    }
+                })
+
+
+
+
+
+        quizApp.appendChild(title)
+        quizApp.appendChild(question)
+        quizApp.appendChild(answers)
+        quizApp.appendChild(nextBtn)
+        
+        }
+        renderQuiz()
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Каталог квизов</title>
+  </head>
+  <body>
+
+    <div class="app"></div>
+
+
+    <script src="script.js"></script>
+    <script>
+
+      const app = document.querySelector(".app")
+
+      app.innerHTML = ""
+      quizContainer.forEach(quiz => {
+
+        const quizCard = document.createElement("div")
+        quizCard.className = "quiz-card"
+
+        const quizTitle = document.createElement("h2")
+        quizTitle.className = "quiz-title"
+        quizTitle.textContent = quiz.name
+
+        const quizImg = document.createElement("img")
+        quizImg.className = "quiz-img"
+        quizImg.src = quiz.img
+
+        const quizBtn = document.createElement("button")
+        quizBtn.className = "quiz-btn"
+        quizBtn.dataset.name = quiz.name
+        quizBtn.textContent = "Пройти квиз"
+
+        const result = document.createElement("div") 
+        result.className = "quiz-score"
+        if (localStorage.getItem(quiz.name)) {
+          result.textContent = "Твой лучший результат: " + localStorage.getItem(quiz.name)
+        }
+
+        app.appendChild(quizCard)
+        quizCard.appendChild(quizTitle)
+        quizCard.appendChild(quizImg)
+        quizCard.appendChild(quizBtn)
+        quizCard.appendChild(result)
+      })
+
+
+      const allBtns = document.querySelectorAll(".quiz-btn")
+      allBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          sessionStorage.setItem("chosenQuiz", btn.dataset.name)
+          window.location.href = "quiz.html#" + btn.dataset.name
+        })
+      })
+
+
+    </script>
+  </body>
+</html>

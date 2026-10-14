@@ -1,0 +1,117 @@
+const quizContainer = [
+    {
+        name: "простые вопросы",
+        img: "https://i.pinimg.com/736x/4c/fe/ca/4cfeca0b3f4285a49ef382610949fcbf.jpg",
+        questions: [
+                        {   
+                            img: "",
+                            question: "Столица Японии?",
+                            options: ["Сеул", "Пекин", "Токио", "Бангкок"],
+                            correctAnswer: "Токио",
+                        },
+                        {
+                            img: "",
+                            question: "Сколько планет в Солнечной системе?",
+                            options: ["7", "8", "9", "10"],
+                            correctAnswer: "8",
+                        },
+                        {
+                            img: "",
+                            question: "Кто написал 'Войну и мир'?",
+                            options: ["Достоевский", "Толстой", "Чехов", "Пушкин"],
+                            correctAnswer: "Толстой",
+                        },
+                        {
+                            img: "",
+                            question: "Какой газ составляет большую часть атмосферы Земли?",
+                            options: ["Кислород", "Углекислый газ", "Азот", "Водород"],
+                            correctAnswer: "Азот",
+                        },
+                        {
+                            img: "",
+                            question: "В каком году человек впервые высадился на Луне?",
+                            options: ["1965", "1969", "1972", "1959"],
+                            correctAnswer: "1969",
+                        }
+                    ]
+    },
+    {
+    name: "интересные факты",
+    img: "https://i.pinimg.com/736x/49/88/12/498812add8fa4d6a4da3b67e6e834778.jpg",
+    questions: [
+        {
+            img: "",
+            question: "Какое животное самое быстрое на суше?",
+            options: ["Лев", "Гепард", "Антилопа", "Лошадь"],
+            correctAnswer: "Гепард",
+        },
+        {
+            img: "",
+            question: "Сколько континентов на Земле?",
+            options: ["5", "6", "7", "8"],
+            correctAnswer: "7",
+        },
+        {
+            img: "",
+            question: "Какой океан самый большой?",
+            options: ["Атлантический", "Индийский", "Северный Ледовитый", "Тихий"],
+            correctAnswer: "Тихий",
+        },
+        {
+            img: "",
+            question: "Кто изобрёл телефон?",
+            options: ["Эдисон", "Белл", "Тесла", "Маркони"],
+            correctAnswer: "Белл",
+        },
+        {
+            img: "",
+            question: "Какое озеро самое глубокое в мире?",
+            options: ["Каспийское", "Байкал", "Виктория", "Титикака"],
+            correctAnswer: "Байкал",
+        }
+    ]
+},
+
+{
+    name: "математика в уме",
+    img: "https://i.pinimg.com/736x/fc/72/af/fc72afaa79b09434da025c1e9bf44759.jpg",
+    questions: [
+        {
+            img: "",
+            question: "Сколько будет 15 * 4?",
+            options: ["45", "50", "60", "75"],
+            correctAnswer: "60",
+        },
+        {
+            img: "",
+            question: "Чему равен 25% от 80?",
+            options: ["15", "20", "25", "40"],
+            correctAnswer: "20",
+        },
+        {
+            img: "",
+            question: "Сколько будет 144 ÷ 12?",
+            options: ["10", "11", "12", "14"],
+            correctAnswer: "12",
+        },
+        {
+            img: "",
+            question: "Квадрат какого числа равен 169?",
+            options: ["11", "12", "13", "14"],
+            correctAnswer: "13",
+        },
+        {
+            img: "",
+            question: "Сколько будет 7 * 8 - 6?",
+            options: ["48", "50", "52", "56"],
+            correctAnswer: "50",
+        }
+    ]
+},
+
+
+
+];
+
+
+
