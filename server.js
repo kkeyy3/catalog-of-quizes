@@ -6,18 +6,22 @@ const { json } = require("stream/consumers")
 const app = express()
 const port = 3000
 
-app.get("/quizzes", (req, res) => {
+function readQuizzes() {
     const text = fs.readFileSync("quizzes.json", "utf-8")
-    const quizzes = JSON.parse(text)
+    return quizzes = JSON.parse(text)
+}
+
+
+app.get("/quizzes", (req, res) => {
+    const quizzes = readQuizzes()
     res.status(200).json(quizzes)
 })
 
 app.get("/quizzes/:id", (req, res) => {
     const id = Number(req.params.id)
-    const text = fs.readFileSync("quizzes.json", "utf-8")
-    const quizzes = JSON.parse(text)
-    const quiz = quizzes.find(quiz => quiz.id === id)
-    if (!quiz)return res.status(404).json({error : "Квиз не найден"}); 
+    const quizzes = readQuizzes()
+    const quiz = quizzes.find(q => q.id === id)
+    if (!quiz)  res.status(404).json({error : "Квиз не найден"}); 
     else res.status(200).json(quiz)
 })
 
